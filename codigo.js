@@ -63,10 +63,16 @@ function pasar() {
   }
 }
 
+function dificultad() {
+  clearInterval(intervalo);
+  intervalo = setInterval(mover, 700);
+  lobo.removeEventListener("mouseover", dificultad);
+}
+
 boton.addEventListener("click", empezar);
 function empezar() {
   instrucciones.style.display = "none";
-  intervalo = setInterval(mover, 2000);
+  intervalo = setInterval(mover, 1000);
   interTiempo = setInterval(pasar, 1000);
   lobo.addEventListener("click", clickLobo);
   oveja1.addEventListener("click", clickoveja);
@@ -74,6 +80,8 @@ function empezar() {
   oveja3.addEventListener("click", clickoveja);
   oveja4.addEventListener("click", clickoveja);
   oveja5.addEventListener("click", clickoveja);
+  lobo.addEventListener("mouseover", dificultad);
+
 
   posX = Math.round(Math.random() * 600);
   posY = Math.round(Math.random() * 400);
